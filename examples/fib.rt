@@ -1,0 +1,17 @@
+# write first 8 fibonacci numbers to mem
+# (writing one number per address)
+
+  FIB1 <- 0 : COUNT <- 0;
+  FIB2 <- 1;
+
+@loop
+
+  # give some debug output
+  !_ COUNT, FIB1, FIB2, []
+
+  [COUNT] <- FIB1;
+  TMP <- FIB1;
+  FIB1 <- FIB2;
+  FIB2 <- FIB2 + TMP;
+  COUNT <- COUNT + 1;
+  goto if COUNT < 8 then loop;
