@@ -444,13 +444,15 @@ proc execute(prog: Prog, mem: string, wordSize: range[1 .. MaxWordSize], steps: 
 proc run(
   prog: string,
   input = "",
-  output = "out",
+  output = "",
   wordSize: range[1..MaxWordSize] = min(4, MaxWordSize),
   steps = false
 ) =
   let mem = if input == "": ""
             else: readFile(input)
-  writeFile(output, execute(parse(open(prog)), mem, wordSize, steps))
+  let res = execute(parse(open(prog)), mem, wordSize, steps)
+  if output != "":
+    writeFile(output, res)
 
 proc assamble(prog: string, output = "") =
   let code = $parse(open(prog))
