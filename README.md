@@ -81,3 +81,19 @@ goto if A == B then some_label else some_other_label
 ```
 `A` and `B` may be a register, mem-access, constant or expression.<br>
 You can use the following comparisons: `==`, `!=`, `<`, `<=`, `>`, `>=`
+
+## Debugging
+You can add debugging outputs with a line of the form `![NAME] [LIST_OF_THINGS_TO_PRINT]`.<br>
+`LIST_OF_THINGS_TO_PRINT` is a comma-seperated list of any of:
+- `REG`: just a name of a register to print
+- `[a..b]`: print RAM from address a to b (including b)
+- `[a..]`: RAM from a to end
+- `[..b]`: RAM from start to b
+- `[a]`: RAM at address a
+- `[]`: the whole RAM
+
+**Example:**
+```
+!debug1 ACCU, [2..4]
+```
+will print content of ACCU register and RAM at addresses 2,3,4
