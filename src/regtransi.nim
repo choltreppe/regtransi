@@ -448,6 +448,7 @@ proc run(
   wordSize: range[1..MaxWordSize] = min(4, MaxWordSize),
   steps = false
 ) =
+  ## run a RT program
   let mem = if input == "": ""
             else: readFile(input)
   let res = execute(parse(open(prog)), mem, wordSize, steps)
@@ -455,8 +456,20 @@ proc run(
     writeFile(output, res)
 
 proc assamble(prog: string, output = "") =
+  ## resolve labels into absolute positions and remove comments / blank lines
   let code = $parse(open(prog))
   if output == "": echo code
   else: writeFile(output, code)
 
-dispatchMulti [run], [assamble]
+dispatchMulti(
+  [run, help={
+    "prog"  : "file containing the code to execute",
+    "input" : "file containing initial state of RAM",
+    "output": "file to write RAM to at end of execution",
+    "steps" : "enable steps, so execution stops at every debug output. continue by pressing enter"
+  }],
+  [assamble, help={
+    "prog"   : "file containing the code to assamble",
+    "output" : "file to write assembled code to. if not given, assembled code is printed to console"
+  }]
+)
