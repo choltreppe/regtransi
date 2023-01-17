@@ -3,19 +3,25 @@
 RegTransI is a register transfer command interpreter (including RAM simulation and jumps), that I wrote for helping me with a university assignment about programming a CU of a CPU. Maybe its usefull for some other students that have simmilar assignments.
 
 ## Installation
-### build yourself
+### prebuild
+There are some prebuild binaries: https://github.com/choltreppe/regtransi/releases/tag/0.1.0
+If there is one for your system just
+- download it
+- rename in to `regtransi`
+- put it somewhere in your `PATH`
+and you are ready to go
+
+### from source
 1. install nim, if you haven't: https://nim-lang.org/install.html
-2. clone the repo:
+2. build with nimble:
 ```
-git clone https://github.com/choltreppe/regtransi
+nimble install https://github.com/choltreppe/regtransi
 ```
-3. build with nimble:
-```
-cd regtransi
-nimble install
-```
+3. make use `.nimble/bin` is in your 
 
 ## Usage
+Use `regtransi --help` to get info about the commands
+
 ### running a rt program
 to run a rt program use the `regtransi run` command:<br>
 (the syntax of programs is explained below)
