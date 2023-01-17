@@ -84,7 +84,7 @@ func `$`(prog: Prog): string =
       of cmdAssgn: fmt"{it.res} <- {it.exp}"
       of cmdJump:
         if it.withCond:
-          fmt"goto if {it.cond} == 0 then {it.goto} else {it.gotoElse}"
+          fmt"goto if {it.cond[0]} {it.cond[1]} {it.cond[2]} then {it.goto} else {it.gotoElse}"
         else:
           fmt"goto {it.goto}"
       of cmdDebug:
