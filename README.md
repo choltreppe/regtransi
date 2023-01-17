@@ -4,11 +4,12 @@ RegTransI is a register transfer command interpreter (including RAM simulation a
 
 ## Installation
 ### prebuild
-There are some prebuild binaries: https://github.com/choltreppe/regtransi/releases/tag/0.1.0
+There are some prebuild binaries: https://github.com/choltreppe/regtransi/releases/tag/0.1.0 <br>
 If there is one for your system just
 - download it
 - rename in to `regtransi`
 - put it somewhere in your `PATH`
+
 and you are ready to go
 
 ### from source
