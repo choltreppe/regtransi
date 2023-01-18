@@ -333,7 +333,7 @@ proc execute(prog: Prog, mem: string, wordSize: range[1 .. MaxWordSize], steps: 
     assert len(s) == wordSize
     var w: array[sizeof(int64), byte]
     for i, c in s:
-      w[wordSize - i - 1] = byte(ord(c))
+      w[i] = byte(ord(c))
     # negative number 1 padding
     if (w[wordSize - 1] and 128) > 0:
       for i in wordSize ..< len(w):
@@ -343,7 +343,7 @@ proc execute(prog: Prog, mem: string, wordSize: range[1 .. MaxWordSize], steps: 
   proc asString(n: int64): string =
     let w = cast[array[sizeof(int64), byte]](n)
     for b in w[0 ..< wordSize]:
-      result = char(b) & result
+      result &= char(b)
 
 
   proc get(loc: Location): Val =
